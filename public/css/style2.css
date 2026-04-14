@@ -1,0 +1,182 @@
+*{
+
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  color:#333333;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.logo img{
+    margin-top: 8px;
+    width: 161px;
+}
+nav {
+   
+display:flex;
+justify-content: space-around;
+
+height: 90px;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.menu{
+    display:flex;
+    justify-content: space-around;
+    list-style:none;
+}
+
+ul.menu li{
+    margin: 10px;
+    line-height: 80px;
+    font-weight: bold;
+    
+}
+ul.menu li a{
+text-decoration:none;
+color:#333333;
+
+}
+
+
+nav .button-dangnhap{
+  width:95px;
+  height:39px;
+  background-color: #3B82F6;
+  color:#ffffff;
+  border-radius:6px;
+  border:none;
+  margin-top:30px;
+  text-decoration:none;
+  text-align: center;
+line-height: 38px;
+
+}
+
+/* booking */
+.timetable {
+    max-width: 1320px;
+    margin: 0 auto;
+  }
+  table {
+    width: 90%;
+    height: auto;
+    margin-left: 65px;
+    border-collapse: collapse;
+    
+  }
+ 
+  table>thead th-child{
+    border: 1px solid rgb(44, 41, 41);
+    border-radius: 5px;
+    padding: 2px;
+    text-align: center;
+  }
+  table>thead .mauda{
+    background-color: #F8F4D8;
+    
+    
+  } 
+table>thead th, td {
+    border: 1px solid rgb(25, 19, 19);
+    padding: 8px;
+    text-align: center;
+  }
+   
+  td.event {
+    background-color: #ffd700;
+  }
+
+  /* footer{
+
+    margin-top: 100px;
+    width: 100%;
+    height: 80%;
+    display: flex;
+
+  } */
+
+.logo-footer img{
+    width: 15%;
+  }
+  .items-left p{
+    font-size: 14px;
+  }
+  .title-footer{  
+    margin: 10px;
+    margin-left: -600px;
+    font-size: 14px
+  }
+  .title-footer ul{
+    list-style: none;
+  }
+  .title-footer ul li a{
+    margin-right: -100px;
+  }
+  .contain{
+
+    margin: 60px 0;
+
+    width: 100%;
+    height: -100px;
+  }
+  div.vertical-line{
+    width: 1px; /* Line width */
+    background-color: black; /* Line color */
+    height: 100%; /* Override in-line if you want specific height. */
+    margin-left: 400px;
+    margin-top: -90px; /* Causes the line to float to left of content. 
+      You can instead use position:absolute or display:inline-block
+      if this fits better with your design */
+  }
+  .dropdown-content {
+    display: inline-block;
+    min-width: 100px;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: -webkit-grab; cursor: grab;
+    border: none;
+    border-radius: 10px;
+    margin: auto;
+    border-radius: 10px;
+    background-color: white;
+    text-decoration: none;
+  }
+  thead tr th .dropdown .dropdown-content a{
+    list-style-type: none;
+    text-decoration: none;
+  }
+  .dropdown{
+    border-radius: 5px;
+  }
+  th{
+      font-size: 12px;
+  }
+  .title-name{
+      font-size: 14px;  
+  }
+  .name-title{
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  @media (max-width: 480px) {
+    table {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+  
+    table>thead th,
+    td {
+      display: inline-block;
+      min-width: 80px;
+    }
+  
+    td:first-child {
+      min-width: 100px;
+    }
+
+  }

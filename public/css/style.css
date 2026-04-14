@@ -1,0 +1,144 @@
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    color:#333333;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.logo img{
+    margin-top: 8px;
+    width: 161px;
+}
+nav {
+   
+display:flex;
+justify-content: space-around;
+height: 90px;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.menu{
+    display:flex;
+    justify-content: space-around;
+    list-style:none;
+}
+
+ul.menu li{
+    margin: 10px;
+    line-height: 80px;
+    font-weight: bold;
+    
+}
+ul.menu li a{
+text-decoration:none;
+color:#333333;
+
+}
+
+nav .button-dangnhap{
+    width:95px;
+    height:39px;
+    background-color: #3B82F6;
+    color:#ffffff;
+    border-radius:6px;
+    border:none;
+    margin-top:30px;
+    text-decoration:none;
+    text-align: center;
+ line-height: 38px;
+}
+
+/* booking */
+.timetable {
+    max-width: 1320px;
+    margin:50px auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    
+  }
+  .head>th{
+    border: 1px solid #333333;
+    padding: 2px;
+    text-align: center; 
+    max-width:180px;
+    height: 46px;
+  }
+.head,.ca>.mau-da{
+    background-color: #F8F4D8;
+    
+  } 
+  .head,.ca>.mau-xanh{
+    background-color: #9EDDFF;
+}
+.mau-xanhla{
+    width:60px;
+    background-color: #D7E5CA;
+    border: 1px solid #333333;
+}
+.ca>th{
+    width: 30px;
+    height:25px;
+    border: 1px solid #333333;
+    text-align: center;
+   
+}
+
+/* nút tròn booking */
+.circle{
+    width:18px;
+    height: 18px;
+   border-radius: 100%;
+   display:flex;
+   margin:auto;
+  
+}
+
+.button-blue {
+    background-color:#3B82F6;
+    border:none;
+} 
+.button-white {
+    background-color:#ffffff;
+    border:1px solid #3B82F6;
+} 
+
+.button-red {
+    background-color:#FF6969;
+    border:none;
+} 
+ /* end nút tròn booking */
+ .search{
+  margin: 80px auto;
+  border:2px solid #3B82F6;
+  border-radius: 8px;
+  width: 85%;
+  height: 90px;
+  display:flex;
+  /* align-items: center; */
+  padding: 9px 0 0 80px;
+ box-shadow: 0 0 15px #bcd3f7;
+ }
+ .dropdown{
+  margin:13px 20px;
+ }
+ .button-timkiem{
+    margin-top: 9px;
+  width:95px;
+  height:40px;
+  background-color: #3B82F6;
+  color:#ffffff;
+  border-radius:6px;
+  border:none;
+ }
+
+  /* css 2 */
+
+
+ 
+

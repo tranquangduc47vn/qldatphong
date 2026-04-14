@@ -1,0 +1,43 @@
+#form {
+    width: 25%;
+    background-color: rgb(255, 255, 255);
+    margin: 5% auto;
+    text-align: center;
+    padding: 40px 35px;
+    position:relative;
+    top:-600px;
+    display:none;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #464646;
+}
+
+#form>form>h1,
+#form>form>input,
+#form>form>select,
+#form>form>button,
+input.datepicker {
+    font-size: 14px;
+    color:#333333;
+}
+
+#form>form>input,
+#form>form>select {
+    margin: 20px 0 20px 0;
+}
+
+#form>form>button {
+    width: 45%;
+    display: flex;
+    margin: 20px auto;
+    justify-content: center;
+    border-radius: 4px;
+    background-color:#3B82F6;
+    color:#ffffff;
+}
+
+#thoat-form{
+    position:absolute;
+    right:20px;
+}
+
+
