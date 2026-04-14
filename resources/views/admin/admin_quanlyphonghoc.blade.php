@@ -12,7 +12,7 @@
                 {!! session('error') !!}
             </div>
         @endif
-        <h4 class="p-5">Admin</h4>
+        <!-- <h4 class="p-5">Admin</h4> -->
         <div class="timetable" style="background-color: white">
             <h4 class="p-5 pb-0">Danh sách phòng</h4>
             <div class="d-flex justify-content-end mb-3" style="margin-right: 5%">
