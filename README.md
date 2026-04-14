@@ -1,4 +1,4 @@
-﻿<p align="center"><img src="/public/img/logo-fpt.png" alt="PolyBooking Logo"></p>
+﻿<p align="center"><img src="/public/img/LogoUte.png" alt="UTELogo"></p>
 
 <p align="center">
     <a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
@@ -9,27 +9,19 @@
 
 ## About PolyBooking
 
-<p>
-    Website PolyBooing was developed by students from FPT Polytechnic College. The website is developed to allow lecturers to book hall and classrooms for events or other learning activities. 
-</p>
 
 ## Developers
 
-- Trần Thị Mỹ Tâm
-- Trần Thiên Phúc
-- Trần Vĩnh Phúc
-- Hồ Văn Đạt
-- Phan Võ Trọng Phong
-- Đỗ Trọng Nhân
-- Nguyễn Tuấn Kiệt
+- Trần Quang Đức
+-Ngô Trường thành
 
 ## Download
 
 On `Github`: <a href="https://github.com/Tam0721/nhom1_bookht_xth">Here</a>
 
-```
-git clone https://github.com/Tam0721/nhom1_bookht_xth.git
-```
+``````
+
+
 
 Or on `Google Drive`: <a href="https://drive.google.com/drive/folders/1fhHQgWxMTcj1j2mQehBiYoXzC4EybZBQ?usp=sharing" target="_blank">Here</a>
 
