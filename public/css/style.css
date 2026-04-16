@@ -136,7 +136,192 @@ nav .button-dangnhap{
   border-radius:6px;
   border:none;
  }
+.schedule-page {
+    background: #f4f7fb;
+    min-height: 100vh;
+}
 
+.schedule-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 20px;
+    border: 1px solid #e9eef5;
+}
+
+.schedule-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+}
+
+.schedule-title {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+    color: #12325b;
+}
+
+.schedule-subtitle {
+    margin: 6px 0 0;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.schedule-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+}
+
+.legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #374151;
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    padding: 8px 12px;
+    border-radius: 999px;
+}
+
+.legend-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.schedule-table-wrap {
+    overflow-x: auto;
+    border-radius: 14px;
+    border: 1px solid #dbe4f0;
+}
+
+.schedule-table {
+    width: 100%;
+    min-width: 1200px;
+    border-collapse: collapse;
+    background: #fff;
+}
+
+.schedule-table th,
+.schedule-table td {
+    border: 1px solid #d7e0ea;
+    text-align: center;
+    padding: 10px 8px;
+    font-size: 14px;
+}
+
+.schedule-table thead th {
+    font-weight: 700;
+}
+
+.day-head {
+    background: #cdeeff;
+    color: #12325b;
+}
+
+.date-head {
+    background: #fff7db;
+    color: #7c5d00;
+}
+
+.mau-xanhla {
+    background: #eaf6e8;
+    color: #1f5130;
+}
+
+.mau-da {
+    background: #d9f0ff;
+    color: #12325b;
+}
+
+.mau-vangnhat {
+    background: #fff6d8;
+}
+
+.room-name {
+    background: #f8fbff;
+    color: #1f2937;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.schedule-table tbody tr:nth-child(even) td,
+.schedule-table tbody tr:nth-child(even) th.room-name {
+    background: #fcfdff;
+}
+
+.schedule-table tbody tr:hover td,
+.schedule-table tbody tr:hover th.room-name {
+    background: #f3f8ff;
+    transition: 0.2s ease;
+}
+
+.sticky-col {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+}
+
+.schedule-table thead .sticky-col {
+    z-index: 3;
+}
+
+.circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: none;
+    display: inline-block;
+    cursor: default;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.circle:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12);
+}
+
+.button-blue {
+    background: #3b82f6;
+}
+
+.button-red {
+    background: #ef4444;
+}
+
+.button-white {
+    background: #ffffff;
+    border: 1.5px solid #cbd5e1;
+}
+
+.pagination-wrap {
+    display: flex;
+    justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+    .schedule-title {
+        font-size: 22px;
+    }
+
+    .schedule-table th,
+    .schedule-table td {
+        font-size: 13px;
+        padding: 8px 6px;
+    }
+
+    .circle {
+        width: 16px;
+        height: 16px;
+    }
+}
   /* css 2 */
 
 

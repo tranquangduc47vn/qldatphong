@@ -47,8 +47,8 @@
     </script>
 </head>
 
-<body>
-    <div class="contain">
+<body class="d-flex flex-column min-vh-100">
+    <div class="contain flex-fill">
         <nav>
             <div class="logo"><img src="{{ asset('img/logo.png') }}"  alt="logo"style="height: 80px; width: auto;"></div>
             <ul class="menu">
@@ -78,7 +78,7 @@
 
 
     </div>
-    <footer>
+    <footer class="mt-auto">
         <div id="kt_footer" class="kt-footer kt-grid__item kt-grid kt-grid--desktop kt-grid--ver-desktop">
             <div class="kt-container kt-container--fluid">
                 <div class="footer-filter-by-campus row">

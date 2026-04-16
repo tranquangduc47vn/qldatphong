@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -31,13 +30,11 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        if(Auth::user()->role == 0){
-            return redirect()->intended(RouteServiceProvider::ADMIN);
-        }else{
-            return redirect()->intended(RouteServiceProvider::HOME);
+        if (Auth::user()->role == 1) {
+            return redirect('/admin/quanlyphonghoc');
         }
 
-        
+        return redirect('/');
     }
 
     /**
@@ -48,27 +45,32 @@ class AuthenticatedSessionController extends Controller
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
 
         return redirect('/');
     }
 
-    public function googleCallback(LoginRequest $request): RedirectResponse
+    /**
+     * Handle Google callback
+     */
+    public function googleCallback(Request $request): RedirectResponse
     {
         $userGoogle = Socialite::driver('google')->user();
+
         $user = User::where('email', $userGoogle->getEmail())->first();
-        dd($user);
+
         if (!$user) {
-            return redirect()->back()->with('msg', 'Bạn chưa có tài khoản vui lòng đăng ký <a href=' . route('register') . '>Tại Đây</a>');
+            return redirect()->route('login')->with('msg', 'Bạn chưa có tài khoản, vui lòng đăng ký.');
         }
-        else {
-            dd($request);
-            $request->authenticate();
 
-            $request->session()->regenerate();
+        Auth::login($user);
 
-            return redirect()->intended(RouteServiceProvider::HOME);
+        $request->session()->regenerate();
+
+        if ($user->role == 1) {
+            return redirect('/admin/quanlyphonghoc');
         }
+
+        return redirect('/');
     }
 }

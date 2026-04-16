@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use App\Models\CoSo;
 use App\Models\Tang;
 use App\Models\Toa;
-use App\Models\LoaiPhong;
 use App\Models\Phong;
 use App\Models\CaHoc;
 use App\Models\Booking;
@@ -19,126 +18,87 @@ class DatPhongController extends Controller
     public function index()
     {
         $co_so = CoSo::all();
-        $loai_phong = LoaiPhong::all();
         $bo_mon = BoMon::all();
-        // $ca_hoc = CaHoc::all();
-        return view('datphong', compact('co_so', 'loai_phong', 'bo_mon'));
+        $ca_hoc = CaHoc::orderBy('id_ca_hoc', 'asc')->get();
+
+        return view('datphong', compact('co_so', 'bo_mon', 'ca_hoc'));
     }
 
     public function getToaNha($idCoSo)
     {
-        // Lấy danh sách tòa nhà dựa trên id của cơ sở
         $toaNha = Toa::where('id_co_so', $idCoSo)->get();
-
-        // Trả về danh sách tòa nhà dưới dạng JSON
         return response()->json($toaNha);
     }
 
     public function getTang($idToaNha)
     {
-        // Lấy danh sách tòa nhà dựa trên id của cơ sở
-        $idTang = Tang::where('id_toa_nha', $idToaNha)->get();
-
-        // Trả về danh sách tòa nhà dưới dạng JSON
-        return response()->json($idTang);
+        $tang = Tang::where('id_toa_nha', $idToaNha)->get();
+        return response()->json($tang);
     }
 
-    public function getPhong($idCoSo, $idToaNha, $idTang, $idLoaiPhong)
+    public function getPhong($idCoSo, $idToaNha, $idTang)
     {
-        // Lấy danh sách tòa nhà dựa trên id của cơ sở
-        $idPhong = Phong::where('id_co_so', $idCoSo)
+        $phong = Phong::where('id_co_so', $idCoSo)
             ->where('id_toa_nha', $idToaNha)
             ->where('id_tang', $idTang)
-            ->where('id_loai_phong', $idLoaiPhong)
             ->get();
 
-        // Trả về danh sách tòa nhà dưới dạng JSON
-        return response()->json($idPhong);
-    }
-
-    public function getCaHoc() {
-        $idCaHoc = CaHoc::where('loai_ca_hoc', 1)->get();
-        return response()->json($idCaHoc);
-    }
-
-    public function getBuoiHoc() {
-        $idBuoiHoc = CaHoc::where('loai_ca_hoc', 2)->get();
-        return response()->json($idBuoiHoc);
+        return response()->json($phong);
     }
 
     public function store(Request $request)
     {
-        // kiểm tra lỗi form nếu không nhập dữ liệu
-        $errorMessages = [
-            'id_co_so.required' => 'Vui lòng chọn cơ sở',
-            'id_loai_phong.required' => 'Vui là chọn loại phòng',
-            'id_toa_nha.required' => 'Vui là chọn tòa nhà',
-            'id_tang.required' => 'Vui là chọn tầng',
-            'id_phong.required' => 'Vui lòng chọn phòng',
-            'su_kien' => 'Vui lòng nhập tên sự kiệm',
-            'ngay_to_chuc' => 'Vui lòng chọn ngày tổ chức',
-            'thoi_gian_bat_dau' => 'Vui lòng chọn thời gian bắt đầu',
-            'so_luong' => 'Vui lòng nhập số người tham gia',
-            'id_ca_hoc' => 'Vui là chọn ca học',
-
-        ];
-
         $request->validate([
             'id_co_so' => 'required',
-            'id_loai_phong' => 'required',
             'id_toa_nha' => 'required',
             'id_tang' => 'required',
             'id_phong' => 'required',
-            'su_kien' => 'required',
             'ngay_to_chuc' => 'required',
-            'thoi_gian_bat_dau' => 'required',
+            'id_ca_hoc' => 'required|array|min:1',
+            'su_kien' => 'required',
             'so_luong' => 'required',
-            'id_ca_hoc' => 'required',
-        ], $errorMessages);
+            'id_bo_mon' => 'required',
+        ], [
+            'id_co_so.required' => 'Vui lòng chọn cơ sở',
+            'id_toa_nha.required' => 'Vui lòng chọn tòa',
+            'id_tang.required' => 'Vui lòng chọn tầng',
+            'id_phong.required' => 'Vui lòng chọn phòng',
+            'ngay_to_chuc.required' => 'Vui lòng chọn ngày tổ chức',
+            'id_ca_hoc.required' => 'Vui lòng chọn ít nhất 1 ca học',
+            'su_kien.required' => 'Vui lòng nhập tên sự kiện',
+            'so_luong.required' => 'Vui lòng nhập số người tham gia',
+            'id_bo_mon.required' => 'Vui lòng chọn bộ môn',
+        ]);
 
-
-        // Lấy dữ liệu từ form
-        $data = $request->all();
-
-        // Chỉ định các trường cần cập nhật
-        $fillableData = array_diff_key($data, array_flip(['updated_at'])); // Loại bỏ updated_at từ dữ liệu
-        // unset($data['updated_at']);
-        // $fillableData = $data;
-
-        // Lưu giá trị updated_at là NULL
-        $fillableData['updated_at'] = NULL;
-
-        // Kiểm tra trùng lặp tên phòng
-        // $existingPhong = Phong::where('id_co_so', $request->input('id_co_so'))
-        //     ->where('id_loai_phong', $request->input('id_loai_phong'))
-        //     ->where('id_toa_nha', $request->input('id_toa_nha'))
-        //     ->where('id_tang', $request->input('id_tang'))
-        //     ->where('ten_phong', $request->input('ten_phong'))
-        //     ->first();
-
-        // if ($existingPhong) {
-        //     return redirect()->back()->withErrors(['ten_phong' => 'Thông tin phòng đã tồn tại. Vui lòng kiểm tra lại.']);
-        // }
-
-        // Lấy id_user từ session
         $id_user = Auth::user()->id_user;
 
-        // tạo đối tượng mới
-        $booking = new Booking;
-        // lưu thông tin các trường cần cập nhật
-        $booking->ngay_dat = now();
-        $booking->id_user = $id_user; // Save id_user from session
-        $booking->fill($fillableData, ['ngay_dat', 'ngay_to_chuc', 'thoi_gian_bat_dau', 'su_kien', 'so_luong', 'id_phong', 'id_ca_hoc', 'id_bo_mon', 'id_user']);
-        $booking->save();
+        foreach ($request->id_ca_hoc as $ca) {
+            $booking = new Booking();
+            $booking->ngay_dat = now();
+            $booking->ngay_to_chuc = $request->ngay_to_chuc;
+            $booking->su_kien = $request->su_kien;
+            $booking->ghi_chu_admin = null;
+            $booking->ly_do_huy = null;
+            $booking->so_luong = $request->so_luong;
+            $booking->booking_status = 0;
+            $booking->id_bo_mon = $request->id_bo_mon;
+            $booking->id_user = $id_user;
+            $booking->id_phong = $request->id_phong;
+            $booking->id_ca_hoc = $ca;
 
-        // hiển thị tên phòng được lưu
-        // $ten_phong = $booking->ten_phong;
+            if ($ca == 1) {
+                $booking->thoi_gian_bat_dau = '07:00:00';
+            } elseif ($ca == 2) {
+                $booking->thoi_gian_bat_dau = '13:00:00';
+            } elseif ($ca == 3) {
+                $booking->thoi_gian_bat_dau = '18:00:00';
+            } else {
+                $booking->thoi_gian_bat_dau = '07:00:00';
+            }
+
+            $booking->save();
+        }
 
         return redirect()->route('ls')->with('success', 'Đã book phòng thành công. Đang chờ duyệt');
-
-        $sessionData = $request->session()->all();
-
-        // Dump and die to see the content
-        dd($sessionData);
     }
 }

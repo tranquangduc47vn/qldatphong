@@ -15,6 +15,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
+
     <style>
         h1 {
             font-size: 16px;
@@ -49,7 +50,7 @@
             -webkit-transition: background-color 2s ease-out;
             -moz-transition: background-color 2s ease-out;
             -o-transition: background-color 2s ease-out;
-            transition: background-color 2s ease-out
+            transition: background-color 2s ease-out;
         }
 
         .lydo:hover {
@@ -57,15 +58,11 @@
             background-color: #9c9494;
         }
 
-        /* css qlphong */
         .title-admin {
             button {
                 font-size: 10px;
             }
 
-            /* end */
-
-            /* css qlthongtin */
             .tttk>h1 {
                 font-size: 16px;
             }
@@ -77,74 +74,83 @@
     </style>
 </head>
 
-<body>
-    <div class="contain">
+<body class="d-flex flex-column min-vh-100">
+    <div class="contain flex-fill">
         <nav>
-            <div class="logo"><img src="/bookPhong/img/logo-fpt.png" alt=""></div>
+            <div class="logo">
+                <img src="/bookPhong/img/logo-fpt.png" alt="">
+            </div>
+
             <ul class="menu">
                 <li><a href="{{ route('quanlyphonghoc.index') }}">QUẢN LÝ PHÒNG</a></li>
-                <li><a href="qlthongtin">QUẢN LÝ THÔNG TIN</a></li>
-                <li><a href="qlco_so">QUẢN LÝ CƠ SỞ</a></li>
-                <li><a href="qltoa_nha">QUẢN LÝ TÒA NHÀ</a></li>
-                <li><a href="qlca_hoc">QUẢN LÝ CA HỌC</a></li>
+                <li><a href="{{ url('/admin/qlthongtin') }}">QUẢN LÝ THÔNG TIN</a></li>
+                <li><a href="{{ url('/admin/qlco_so') }}">QUẢN LÝ CƠ SỞ</a></li>
+                <li><a href="{{ url('/admin/qltoa_nha') }}">QUẢN LÝ TÒA NHÀ</a></li>
+                <li><a href="{{ url('/admin/qlca_hoc') }}">QUẢN LÝ CA HỌC</a></li>
                 <li><a href="{{ route('qldatphong.index') }}">PHÒNG CHƯA XỬ LÝ</a></li>
                 <li><a href="{{ route('qldatphong.progressed') }}">PHÒNG ĐÃ XỬ LÝ</a></li>
             </ul>
-            {{-- <a class="button-dangnhap" href="/login">Đăng nhập</a> --}}
+
             @guest
                 @if (Route::has('login'))
                     <a class="button-dangnhap" href="{{ route('login') }}">Đăng nhập</a>
                 @endif
-                {{-- @if (Route::has('register'))
-                    <a class="button-dangnhap" href="{{ route('register') }}">Đăng ký</a>
-                @endif --}}
             @else
                 <form action="{{ route('logout') }}" method="post">
                     @csrf
-                    <button class="button-dangnhap" type="submit"
-                     {{-- href="{{ route('logout') }}"
-                    onlick="event.preventDefault();document.getElementById('logout-form').submit();" --}}
-                    >
-                    Đăng xuất
-                </button>
+                    <button class="button-dangnhap" type="submit">Đăng xuất</button>
                 </form>
             @endguest
         </nav>
+
         <br>
-        @yield('noidung')
-         <footer>
+
+        <main>
+            @yield('noidung')
+        </main>
+    </div>
+
+    <footer class="mt-auto">
         <div id="kt_footer" class="kt-footer kt-grid__item kt-grid kt-grid--desktop kt-grid--ver-desktop">
             <div class="kt-container kt-container--fluid">
                 <div class="footer-filter-by-campus row">
-                    <div class="column poly-logo"><img id="poly-logo" src="{{ asset('img/LogoUte.png') }}"
-                            alt="" width="250">
-                        <h6 class="kt-widget1__title"><i class="fas fa-map-marker-alt"></i> <a class="kt-link address">
+                    <div class="column poly-logo">
+                        <img id="poly-logo" src="{{ asset('img/LogoUte.png') }}" alt="" width="250">
+                        <h6 class="kt-widget1__title">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <a class="kt-link address">
                                 1 Võ Văn Ngân, Phường Thủ Đức, Thành Phố Hồ Chí Minh
-                            </a></h6>
+                            </a>
+                        </h6>
                     </div>
+
                     <div class="column campus-contact-information">
                         <h3 class="contact-title">Thông tin liên hệ</h3>
-                        <div class="campus-contact-content"><i class="fas fa-phone-alt"></i> <span>
+                        <div class="campus-contact-content">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>
                                 Số điện thoại liên hệ giải đáp ý kiến sinh viên:
-                                <a class="kt-link title">(+84 -028) 37225724;</a></span> <span class="break-line"><i
-                                    class="fas fa-envelope"></i> <span>Địa chỉ email:</span>
+                                <a class="kt-link title">(+84 -028) 37225724;</a>
+                            </span>
+
+                            <span class="break-line">
+                                <i class="fas fa-envelope"></i>
+                                <span>Địa chỉ email:</span>
                                 <ul>
-                        
                                     <li>
-                                        
                                         <ul>
                                             <li><a class="kt-link title">hcth@hcmute.edu.vn</a></li>
                                             <li><a class="kt-link title">bmc@hcmute.edu.vn</a></li>
                                         </ul>
                                     </li>
                                 </ul>
-                            </span></div>
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
-    </div>
 </body>
 
 </html>
